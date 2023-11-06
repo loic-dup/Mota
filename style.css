@@ -1,0 +1,13 @@
+/*
+Theme Name: MotaPhoto
+Theme URI: http://localhost/Mota/
+Author: Loïc Dupin
+Author URI: https://openclassrooms.com
+Description: Thème pour le projet 11 "Créez un site WordPress complexe pour une photographe freelance"
+Version: 1.0
+Tags: openclassrooms, motaphoto, cours, projet11
+Text Domain: motaphoto
+*/
+h1 {
+  color: red;
+}
