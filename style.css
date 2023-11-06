@@ -8,6 +8,48 @@ Version: 1.0
 Tags: openclassrooms, motaphoto, cours, projet11
 Text Domain: motaphoto
 */
-h1 {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+body {
+  max-width: 1440px;
+  margin: auto;
+}
+a {
+  text-decoration: none;
+  font-family: "Space Mono", monospace;
+  color: black;
+  font-weight: 400;
+  font-size: 32px;
+}
+h1,
+h2,
+h3 {
+  font-family: "Space Mono", monospace;
   color: red;
+  font-weight: 700;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+}
+.menu-toggle {
+  display: none;
+}
+.menu-principal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  gap: 30px;
+}
+.menu-border_top {
+  border-top: 1px solid black;
+}
+.menu-border_bottom {
+  border-bottom: 1px solid black;
 }

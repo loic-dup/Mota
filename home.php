@@ -1,3 +1,4 @@
 <?php get_header(); ?>
-<h1>Bienvenue sur le site CookInFamily !</h1>
+<h1>Bienvenue sur le site Motaphoto !</h1>
+<p>Bonjour</p>
 <?php get_footer(); ?>

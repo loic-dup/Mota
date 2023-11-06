@@ -1,7 +1,8 @@
 <?php
 function register_my_menu()
 {
-  register_nav_menu('main-menu', 'Menu principal');
+  register_nav_menu('main-menu', __('Menu principal', 'text-domain'));
+  register_nav_menu('footer-menu', __('Pied de page', 'text-domain'));
 }
 add_action('after_setup_theme', 'register_my_menu');
 /**
@@ -14,3 +15,5 @@ function theme_register_assets()
 }
 // Register style sheet.
 add_action('wp_enqueue_scripts', 'theme_register_assets');
+//Chargement du fichier menus.php
+require_once get_template_directory() . '/assets/walker/menus.php';
