@@ -6,8 +6,10 @@
     'container'      => false,
     'walker'         => new A11y_Walker_Nav_Menu(),
     'menu_id'        => 'secondary-menu',
+    'menu_class'     => 'menu_',
   ]);
   ?>
+  <?php echo get_option('motaphoto_settings_field_email'); ?>
 </nav>
 </body>
 

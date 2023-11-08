@@ -41,15 +41,20 @@ p {
   justify-content: space-around;
   align-items: center;
 }
-ul {
+.menu-border_top {
+  border-top: 1px solid black;
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
   gap: 30px;
 }
-.menu-border_top {
-  border-top: 1px solid black;
-}
 .menu-border_bottom {
   border-bottom: 1px solid black;
+}
+
+.menu_ {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  gap: 30px;
 }

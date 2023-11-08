@@ -21,6 +21,7 @@
         'container'      => false,
         'walker'         => new A11y_Walker_Nav_Menu(),
         'menu_id'        => 'primary-menu',
+        'menu_class'     => 'menu_',
       ]);
       ?>
     </div>
