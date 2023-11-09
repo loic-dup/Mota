@@ -9,7 +9,7 @@
     'menu_class'     => 'menu_',
   ]);
   ?>
-  <?php echo get_option('motaphoto_settings_field_email'); ?>
+  <?php /*  echo get_option('motaphoto_settings_field_email');*/ ?>
 </nav>
 </body>
 

@@ -1,4 +1,3 @@
 <?php get_header(); ?>
-<h1>Bienvenue sur le site Motaphoto !</h1>
-<p>Bonjour</p>
+<img class="bannière" src="<?php echo get_template_directory_uri() . '/assets/images/Header.png'; ?>" alt="Image d'une foule" />
 <?php get_footer(); ?>

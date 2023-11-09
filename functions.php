@@ -12,6 +12,10 @@ function theme_register_assets()
 {
   wp_register_style('style', get_template_directory_uri() . '/style.css');
   wp_enqueue_style('style');
+  wp_register_script('scripts', get_template_directory_uri() . '/assets/js/scripts.js');
+  wp_enqueue_script('scripts');
+  wp_register_script('menus', get_template_directory_uri() . '/assets/js/menus.js');
+  wp_enqueue_script('menus');
 }
 // Register style sheet.
 add_action('wp_enqueue_scripts', 'theme_register_assets');
