@@ -14,6 +14,11 @@ body {
   max-width: 1440px;
   margin: auto;
 }
+listes_articles {
+  display: grid;
+  grid-auto-columns: auto;
+  grid-auto-rows: auto;
+}
 li a,
 li p {
   text-decoration: none;
@@ -206,4 +211,19 @@ p {
     top: 0;
     opacity: 1;
   }
+}
+/* Liste des photos */
+.box {
+  justify-content: center;
+  align-items: center;
+  max-width: 50vw;
+  overflow: hidden;
+}
+.conteneur {
+  margin: auto;
+  max-width: 1148px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 400px 400px 400px 400px 400px;
+  grid-gap: 15px;
 }
