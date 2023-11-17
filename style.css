@@ -32,7 +32,6 @@ h1,
 h2,
 h3 {
   font-family: "Space Mono", monospace;
-  color: red;
   font-weight: 700;
 }
 nav {
@@ -41,6 +40,7 @@ nav {
   width: 100vw;
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: white;
 }
 
 p {
@@ -62,18 +62,23 @@ p {
   nav #icons {
     display: block;
   }
+  .nav_fixed {
+    position: fixed;
+  }
   nav #icons::before {
     content: "\2630";
+    font-size: 30px;
   }
   nav.toggled #icons::before {
     content: "\2715";
+    font-size: 30px;
   }
   nav #primary-menu {
     position: fixed;
-    top: 20px;
+    top: 45px;
     left: -100%;
     flex-direction: column;
-    background-color: red;
+    background-color: #e00000;
     width: 100vw;
     text-align: center;
     transition: 0.25s;
@@ -138,8 +143,9 @@ p {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
+  margin-top: 15%;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -158,20 +164,48 @@ p {
 }
 /* Modal Header */
 .modal-header {
-  padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  background-color: white;
+  font-size: 40px;
+  overflow: hidden;
+  color: black;
+  line-height: 0;
+  position: relative;
 }
 
 /* Modal Body */
 .modal-body {
+  font-family: "Poppins", sans-serif;
   padding: 2px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+}
+
+.wpcf7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wpcf7-submit {
+  display: flex;
+  border: none;
+  border-radius: 3px;
+  position: relative;
+  background-color: #d8d8d8;
+  color: black;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 16vw;
+  height: 10vh;
+  margin: auto;
 }
 
 /* Modal Footer */
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: white;
   color: white;
 }
 
@@ -180,9 +214,10 @@ p {
   position: relative;
   background-color: #fefefe;
   margin: auto;
+  margin-top: 5%;
   padding: 0;
-  border: 1px solid #888;
-  width: 80%;
+  border: 3px solid black;
+  width: 30%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -226,4 +261,54 @@ p {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 400px 400px 400px 400px 400px;
   grid-gap: 15px;
+}
+button {
+  border: none;
+  background-color: lightgray;
+  border-radius: 3px;
+  color: black;
+  width: 272px;
+  height: 50px;
+}
+.single_photos_content {
+  display: flex;
+  flex-direction: row;
+}
+.single_photos_thumbnail {
+  display: flex;
+  flex-direction: column;
+}
+.single_photos_meta {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+  width: 50%;
+  border-bottom: 2px solid black;
+}
+.single_photos_contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid black;
+}
+.single_photos_thumbnail_link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 30px;
+  padding-bottom: 30px;
+}
+.single_photos_next {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+.text_maj {
+  text-transform: uppercase;
 }

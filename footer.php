@@ -11,6 +11,7 @@
   ?>
   <?php /*  echo get_option('motaphoto_settings_field_email');*/ ?>
 </nav>
+<?php get_template_part('/assets/template_part/modal', 'page'); ?>
 </body>
 
 </html>
