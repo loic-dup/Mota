@@ -11,7 +11,7 @@
       <h2>CONTACTCONTACTCONTACT</h2>
     </div>
     <div class="modal-body">
-      <?php echo do_shortcode('[contact-form-7 id="f60fefa" title="Sans titre"]'); ?>
+      <?php echo do_shortcode('[contact-form-7 id="f60fefa" title="Sans titre" customtext="a"]'); ?>
     </div>
     <div class="modal-footer">
     </div>

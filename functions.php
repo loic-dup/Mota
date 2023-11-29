@@ -96,7 +96,7 @@ function motaphoto_settings_field_email_output()
   echo '<input name="motaphoto_settings_field_email" type="email" value="' . $value . '" />';
 }
 
-add_action('admin_init', 'motaphoto_settings_register');
+
 
 function motaphoto_request_photos()
 {
@@ -113,3 +113,11 @@ function motaphoto_request_photos()
 }
 add_action('wp_ajax_request_photos', 'motaphoto_request_photos');
 add_action('wp_ajax_nopriv_request_photos', 'motaphoto_request_photos');
+add_action('admin_init', 'motaphoto_settings_register');
+function cs7()
+{
+  $var = $_GET['content'];
+  $html = '<p>.$var.</p>';
+  return $html;
+}
+add_shortcode('cs7', 'cs7');
