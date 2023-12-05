@@ -24,7 +24,7 @@
     <div class="single_photos_contact">
       <h3>Cette photo vous intéresse ?</h3>
       <button id="myBtn" class="button_grey">Contact</button>
-      <div class="single_photos_container">
+      <div class="single_photos_container2">
         <div class="single_photos_box2 prev_img">
           <?php
           $previous_post = get_previous_post();
@@ -66,6 +66,12 @@
           <?php endif; ?>
         </div>
       </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          let ref = <?php $current_reference ?>;
+          document.querySelector("#ref").value = <?php $current_reference ?>;
+        })
+      </script>
       <a href="http://localhost/Mota/"><button class="button_grey">Toutes les photos</button></a>
     </div>
 

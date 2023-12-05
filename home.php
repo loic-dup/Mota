@@ -1,8 +1,5 @@
 <?php get_header(); ?>
-<img class="bannière" src="<?php echo get_template_directory_uri() . '/assets/images/Header.png'; ?>" alt="Image d'une foule" />
-
-
-
+<?php get_template_part('assets/template_part/hero-section'); ?>
 <?php
 $args = array('post_type' => 'photos');
 $loop = new WP_Query($args);
@@ -24,5 +21,7 @@ if ($loop->have_posts()) : ?>
 <?php else : ?>
   <h1> Pas d'articles</h1>
 <?php endif; ?>
-<a><button class="button_load" type="button">Charger plus</button></a>
+<div class="bouton">
+  <button id="load-more-button">Charger plus</button>
+</div>
 <?php get_footer(); ?>
