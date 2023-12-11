@@ -12,6 +12,10 @@ function theme_register_assets()
 {
   wp_register_style('style', get_template_directory_uri() . '/style.css');
   wp_enqueue_style('style');
+  wp_register_style('lightbox__style', get_template_directory_uri() . '/assets/css/lightbox.css');
+  wp_enqueue_style('lightbox__style');
+  wp_register_style('filtres__style', get_template_directory_uri() . '/assets/css/filtres.css');
+  wp_enqueue_style('filtres__style');
   wp_register_script('scripts', get_template_directory_uri() . '/assets/js/scripts.js');
   wp_enqueue_script('scripts');
   wp_register_script('menus', get_template_directory_uri() . '/assets/js/menus.js');
