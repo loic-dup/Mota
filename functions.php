@@ -17,6 +17,7 @@ function theme_register_assets()
   wp_register_script('menus', get_template_directory_uri() . '/assets/js/menus.js');
   wp_enqueue_script('menus');
   wp_enqueue_script('motaphoto', get_template_directory_uri() . '/assets/js/motaphoto.js', array('jquery'), '1.0.0', true);
+  wp_enqueue_script('ajax-scripts', get_template_directory_uri() . '/assets/js/ajax-scripts.js', array('jquery'), '1', true);
   wp_localize_script('motaphoto', 'motaphoto_js', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 // Register style sheet.
@@ -96,70 +97,15 @@ function motaphoto_settings_field_email_output()
   echo '<input name="motaphoto_settings_field_email" type="email" value="' . $value . '" />';
 }
 
-
-add_action('wp_ajax_capitaine_load_comments', 'capitaine_load_comments');
-add_action('wp_ajax_nopriv_capitaine_load_comments', 'capitaine_load_comments');
-
-function capitaine_load_comments()
-{
-
-  // Vérification de sécurité
-  if (
-    !isset($_REQUEST['nonce']) or
-    !wp_verify_nonce($_REQUEST['nonce'], 'capitaine_load_comments')
-  ) {
-    wp_send_json_error("Vous n’avez pas l’autorisation d’effectuer cette action.", 403);
-  }
-
-  // On vérifie que l'identifiant a bien été envoyé
-  if (!isset($_POST['postid'])) {
-    wp_send_json_error("L'identifiant de l'article est manquant.", 400);
-  }
-
-  // Récupération des données du formulaire
-  $post_id = intval($_POST['postid']);
-
-  // Vérifier que l'article est publié, et public
-  if (get_post_status($post_id) !== 'publish') {
-    wp_send_json_error("Vous n'avez pas accès aux commentaires de cet article.", 403);
-  }
-
-  // Utilisez sanitize_text_field() pour les chaines de caractères.
-  // exemple : 
-  $name = sanitize_text_field($_POST['name']);
-
-  // Requête des commentaires
-  $comments = get_comments([
-    'post_id' => $post_id,
-    'status' => 'approve'
-  ]);
-
-  // Préparer le HTML des commentaires
-  $html = wp_list_comments([
-    'per_page' => -1,
-    'avatar_size' => 76,
-    'echo' => false,
-  ], $comments);
-
-  // Envoyer les données au navigateur
-  wp_send_json_success($html);
-}
 function enqueue_ajax_scripts()
 {
   wp_enqueue_script('jquery');
-  wp_register_script('ajax-scripts', get_template_directory_uri() . '/assets/js/ajax-scripts.js');
-  wp_enqueue_script('ajax-scripts', get_template_directory_uri() . '/js/ajax-scripts.js', array('jquery'), '1', true);
-  wp_enqueue_script('filtre', get_template_directory_uri() . '/js/filtre.js', array('jquery'), '1', true);
-
-
+  wp_register_script('ajax-scripts', get_template_directory_uri() . '/assets/js/ajax-scripts.js', array('jquery'), '1', true);
+  wp_enqueue_script('ajax-scripts', get_template_directory_uri() . '/assets/js/ajax-scripts.js', array('jquery'), '1', true);
   // Passez l'URL Ajax au script
   wp_localize_script('ajax-scripts', 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
-  wp_localize_script('filtre', 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts', 'enqueue_ajax_scripts');
-
-
-
 // afficher plus
 function load_more_posts()
 {
@@ -167,27 +113,25 @@ function load_more_posts()
 
   $query_args = array(
     'post_type' => 'photos',
-    'posts_per_page' => 12,
+    'posts_per_page' => 24,
     'paged' => $page,
+    'orderby' => 'post_in',
     array(
       'taxonomy' => 'category',
-      'field' => 'slug',
     ),
+
   );
 
   $query = new WP_Query($query_args);
 
   if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post();
-
-      the_post_thumbnail();
-
+      get_template_part('assets/template_part/post-gallery');
     endwhile;
   endif;
 
   // wp_reset_postdata();
   die();
 }
-
 add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');

@@ -54,9 +54,32 @@ p {
   display: none;
 }
 .hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   max-width: 1440px;
   overflow: hidden;
+}
+.hero-image {
+  width: 100%;
+}
+.hero-title {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.hero-title h1 {
+  font-family: "SpaceMono-Bold";
+  font-size: 6rem;
+  color: transparent;
+  -webkit-text-stroke: 0.5px white;
+  text-transform: uppercase;
+  font-style: italic;
+  width: 100%;
+  text-align: center;
 }
 @media (max-width: 800px) {
   nav #icons {
@@ -264,15 +287,15 @@ p {
 }
 .box img {
   max-width: 100%;
-  max-height: 100%;
   object-fit: cover;
+  width: 100% !important;
+  height: 495px !important;
 }
 .conteneur {
   margin: auto;
   max-width: 1148px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 400px 400px 400px 400px 400px 400px;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 15px;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -297,7 +320,12 @@ p {
   height: 50px;
   cursor: pointer;
 }
-
+.load_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
 .single_photos_content {
   display: flex;
   flex-direction: row;
@@ -424,4 +452,8 @@ p {
   grid-gap: 20px;
   width: 1148px;
   margin: auto;
+}
+button {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
 }
