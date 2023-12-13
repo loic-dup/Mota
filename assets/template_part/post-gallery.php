@@ -1,2 +1,18 @@
-<?php $next_post = get_post(); ?>
-<div class="box"><a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo get_the_post_thumbnail($next_post->ID, $size = "large"); ?></a></div>
+
+<?php
+$args = array(
+  'post_type' => 'photos',
+  'posts_per_page' => 8,
+);
+// Affichage du portofolio sur la page.
+$query = new WP_Query($args);
+if ($query->have_posts()) :
+  while ($query->have_posts()) : $query->the_post();
+    // Afficher le contenu du post ici (titre, contenu, etc.)
+    get_template_part('assets/template_part/lightbox');
+  endwhile;
+  wp_reset_postdata(); // Réinitialiser la requête post
+else :
+  echo "Aucun post trouvé avec cette taxonomie.lol";
+endif;
+?> 

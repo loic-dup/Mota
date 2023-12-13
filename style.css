@@ -457,3 +457,21 @@ button {
   font-family: "Space Mono", monospace;
   font-weight: 700;
 }
+.logo_eye {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.logo_fullscreen {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  background-color: transparent;
+}
+.box__container {
+  position: relative;
+}
