@@ -2,14 +2,17 @@
   <div class="hero-image">
 
     <?php
+
     $args = array(
       'post_type' => 'photos',
       'posts_per_page' => 1,
       'orderby' => 'rand',
-      array(
-        'taxonomy' => 'formats',
-        'field' => 'slug',
-        'terms'    => 'Paysage',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'formats',
+          'field'    => 'slug',
+          'terms'    => 'paysage',
+        ),
       ),
     );
     $query = new WP_Query($args);

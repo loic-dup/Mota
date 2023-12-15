@@ -1,28 +1,28 @@
 jQuery(document).ready(function ($) {
-  $("#filtres_category , #filtres_formats, #filtres_dates ").change(
+  // Fonction étant utiliser pour détecter le changement d'option,
+  // dans les differents selects et appliquer les filtres.
+  $("#filtres__category , #filtres__formats, #filtres__dates ").on(
+    "change",
     function () {
-      let category = $("#filtres_category").val();
-      let formats = $("#filtres_formats").val();
-      let order = $("#filtres_dates").val();
-
+      let category = $("#filtres__category").val();
+      let formats = $("#filtres__formats").val();
+      let order = $("#filtres__dates").val();
+      console.log(order);
       $.ajax({
         url: my_ajax_object.ajax_url,
         type: "POST",
         data: {
+          // Voir dans functions.php
           action: "filter_posts",
           category: category,
-          format: formats,
+          formats: formats,
           order: order,
         },
         success: function (response) {
-          // Mettez à jour la zone d'affichage des publications filtrées.
+          // Mise à jour de la zone d'affichage de la gallerie filtrée.
           $("#gallery").html(response);
         },
       });
     }
   );
-
-  $(".select__title").click(function () {
-    $(".choix-cat").css("display", "flex");
-  });
 });

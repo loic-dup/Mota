@@ -1,10 +1,10 @@
 <?php
-// Récupérer toutes les catégorie
+// Récupérer toutes les catégories
 $taxonomy = 'category';
 $categories = get_terms($taxonomy, array('hide_empty' => false,));
 $category_filter = (isset($_GET['category'])) ? $_GET['category'] : '';
 
-// Récupérer toutes les fomrats
+// Récupérer toutes les formats
 $taxoFormat = 'formats';
 $formats = get_terms($taxoFormat, array('hide_empty' => false,)); // Inclure les catégories sans articles
 $category_filter_formats = (isset($_GET['category'])) ? $_GET['category'] : '';
@@ -33,8 +33,8 @@ $category_filter_formats = (isset($_GET['category'])) ? $_GET['category'] : '';
   <div>
     <select id="filtres__dates" class="filtres_select" name="category">
       <option class="select__title" value="">TRIER PAR</option>
-      <option class="label" value="date-asc">Plus ancien</option>
-      <option value="date-desc">Plus récent</option>
+      <option class="label" value="ASC">Plus ancien</option>
+      <option value="DESC">Plus récent</option>
     </select>
   </div>
 </div>

@@ -1,4 +1,5 @@
 <?php
+// On enregistre nos différents menus
 function register_my_menu()
 {
   register_nav_menu('main-menu', __('Menu principal', 'text-domain'));
@@ -7,6 +8,7 @@ function register_my_menu()
 add_action('after_setup_theme', 'register_my_menu');
 /**
  * Registers a stylesheet.
+ * Or Registers a script.
  */
 function theme_register_assets()
 {
@@ -26,13 +28,11 @@ function theme_register_assets()
   wp_enqueue_script('ajax-scripts', get_template_directory_uri() . '/assets/js/ajax-scripts.js', array('jquery'), '1', true);
   wp_localize_script('motaphoto', 'motaphoto_js', array('ajax_url' => admin_url('admin-ajax.php')));
 }
-// Register style sheet.
+// Register style sheet or scripts.
 add_action('wp_enqueue_scripts', 'theme_register_assets');
 //Chargement du fichier menus.php
 require_once get_template_directory() . '/assets/walker/menus.php';
-
-//Page d'administation
-
+//Mise en place de la page d'administation
 function motaphoto_add_admin_pages()
 {
   add_menu_page(__('Paramètres du thème MotaPhoto', 'MotaPhoto'), __('MotaPhoto', 'motaphoto'), 'manage_options', 'motaphoto-settings', 'motaphoto_theme_settings', 'dashicons-admin-settings', 60);
@@ -63,7 +63,7 @@ function motaphoto_settings_register()
   add_settings_field('motaphoto_settings_field_phone_number', __('Numéro de téléphone', 'motaphoto'), 'motaphoto_settings_field_phone_number_output', 'motaphoto_settings_section', 'motaphoto_settings_section');
   add_settings_field('motaphoto_settings_field_email', __('Adresse mail', 'motaphoto'), 'motaphoto_settings_field_email_output', 'motaphoto_settings_section', 'motaphoto_settings_section');
 }
-//Ajout des champs
+//Ajout des champs de la page d'aministration
 function motaphoto_settings_fields_validate($inputs)
 {
   if (!empty($_POST)) {
@@ -81,7 +81,6 @@ function motaphoto_settings_fields_validate($inputs)
 }
 function motaphoto_settings_section_introduction()
 {
-
   _e('Paramètrez les différentes options de votre thème MotapPhoto.', 'motaphoto');
 }
 function motaphoto_settings_field_introduction_output()
@@ -102,7 +101,7 @@ function motaphoto_settings_field_email_output()
 
   echo '<input name="motaphoto_settings_field_email" type="email" value="' . $value . '" />';
 }
-
+// Register ajax scripts.
 function enqueue_ajax_scripts()
 {
   wp_enqueue_script('jquery');
@@ -112,7 +111,7 @@ function enqueue_ajax_scripts()
   wp_localize_script('ajax-scripts', 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts', 'enqueue_ajax_scripts');
-// afficher plus
+// Fonction permettant le chargement de post supplémentaires
 function load_more_posts()
 {
   $page = $_POST['photos'];
@@ -141,3 +140,124 @@ function load_more_posts()
 }
 add_action('wp_ajax_load_more_posts', 'load_more_posts');
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
+// Fonction pour la gestion des filtres 
+function filter_posts()
+{
+  $categorie =  $_POST['category'];
+  $format = $_POST['formats'];
+  $sort_order = $_POST['order'];
+  // Si on utilises les deux filtres Categories et Formats
+  // Alors on applique le tri de photos correspondant
+  if ($categorie && $format) {
+    $args = array(
+      'post_type' => 'photos',
+      'orderby' => $sort_order,
+      'order' => $sort_order,
+      'tax_query' => array(
+        'relation' => 'AND',
+        array(
+          'taxonomy' => 'category',
+          'field' => 'slug',
+          'terms' => $categorie,
+        ),
+        array(
+          'taxonomy' => 'formats',
+          'field' => 'slug',
+          'terms' => $format,
+        ),
+      ),
+
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+      while ($query->have_posts()) : $query->the_post();
+
+        get_template_part('assets/template_part/lightbox');
+
+      endwhile;
+    else :
+      echo "Il n'y a pas de photos correspondant à votre recherche";
+    endif;
+  }
+  // Si on utilises le  filtre Categories
+  // Alors on applique le tri de photos correspondant
+  elseif ($categorie) {
+    $args = array(
+      'post_type' => 'photos',
+      'orderby' => $sort_order,
+      'order' => $sort_order,
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'category',
+          'field'    => 'slug',
+          'terms'    =>  $categorie,
+        ),
+      ),
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+      while ($query->have_posts()) : $query->the_post();
+
+        get_template_part('assets/template_part/lightbox');
+
+      endwhile;
+    else :
+      echo "Il n'y a pas de photos correspondant à votre recherche";
+
+    endif;
+  }
+  // Si on utilises le  filtre Formats
+  // Alors on applique le tri de photos correspondant 
+  elseif ($format) {
+    $args = array(
+      'post_type' => 'photos',
+      'orderby' => $sort_order,
+      'order' => $sort_order,
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'formats',
+          'field'    => 'slug',
+          'terms'    =>  $format,
+        ),
+      ),
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+      while ($query->have_posts()) : $query->the_post();
+
+        get_template_part('assets/template_part/lightbox');
+
+      endwhile;
+    else :
+      echo "Il n'y a pas de photos correspondant à votre recherche";
+
+    endif;
+  }
+  // Si on utilises le  filtre date
+  // Alors on applique le tri de photos correspondant 
+  elseif ($sort_order) {
+    $args = array(
+      'post_type' => 'photos',
+      'orderby' => $sort_order,
+      'order' => $sort_order,
+      'tax_query' => array(),
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+      while ($query->have_posts()) : $query->the_post();
+
+        get_template_part('assets/template_part/lightbox');
+
+      endwhile;
+    else :
+      echo "Il n'y a pas de photos correspondant à votre recherche";
+    endif;
+  }
+}
+
+add_action('wp_ajax_filter_posts', 'filter_posts');
+add_action('wp_ajax_nopriv_filter_posts', 'filter_posts');

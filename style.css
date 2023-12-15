@@ -10,14 +10,10 @@ Text Domain: motaphoto
 */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Space+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+/* Styles globaux */
 body {
   max-width: 1440px;
   margin: auto;
-}
-listes_articles {
-  display: grid;
-  grid-auto-columns: auto;
-  grid-auto-rows: auto;
 }
 li a,
 li p {
@@ -34,6 +30,10 @@ h3 {
   font-family: "Space Mono", monospace;
   font-weight: 700;
 }
+p {
+  font-family: "Poppins", sans-serif;
+}
+/* Header Styles */
 nav {
   margin: auto;
   max-width: 1440px;
@@ -42,10 +42,6 @@ nav {
   padding-bottom: 10px;
   background-color: white;
 }
-
-p {
-  font-family: "Poppins", sans-serif;
-}
 .logo {
   width: 216px;
   height: 14px;
@@ -53,33 +49,29 @@ p {
 #icons {
   display: none;
 }
-.hero-container {
+.menu-principal {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  max-width: 1440px;
-  overflow: hidden;
-}
-.hero-image {
-  width: 100%;
-}
-.hero-title {
-  display: flex;
-  position: absolute;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
 }
-.hero-title h1 {
-  font-family: "SpaceMono-Bold";
-  font-size: 6rem;
-  color: transparent;
-  -webkit-text-stroke: 0.5px white;
-  text-transform: uppercase;
-  font-style: italic;
-  width: 100%;
-  text-align: center;
+.menu-border_top {
+  border-top: 1px solid black;
+}
+.menu-border_bottom {
+  border-bottom: 1px solid white;
+  box-shadow: 0px 4px 14px 10px #00000008;
+}
+
+.menu_ {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  gap: 30px;
+}
+.menu_ a:hover {
+  color: #e00000;
 }
 @media (max-width: 800px) {
   nav #icons {
@@ -127,30 +119,36 @@ p {
     padding: 0;
   }
 }
-.menu-principal {
+/* Styles Bannières */
+.hero-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 1440px;
+  overflow: hidden;
+}
+.hero-image {
+  width: 100%;
+}
+.hero-title {
+  display: flex;
+  position: absolute;
+  justify-content: center;
   align-items: center;
   width: 100%;
 }
-.menu-border_top {
-  border-top: 1px solid black;
-}
-.menu-border_bottom {
-  border-bottom: 1px solid white;
-  box-shadow: 0px 4px 14px 10px #00000008;
+.hero-title h1 {
+  font-family: "SpaceMono-Bold";
+  font-size: 6rem;
+  color: transparent;
+  -webkit-text-stroke: 0.5px white;
+  text-transform: uppercase;
+  font-style: italic;
+  width: 100%;
+  text-align: center;
 }
 
-.menu_ {
-  display: flex;
-  justify-content: space-evenly;
-  list-style-type: none;
-  gap: 30px;
-}
-.menu_ a:hover {
-  color: #e00000;
-}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -210,27 +208,6 @@ p {
   justify-content: center;
   object-fit: contain;
 }
-
-.wpcf7 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.wpcf7-submit {
-  display: flex;
-  border: none;
-  border-radius: 3px;
-  position: relative;
-  background-color: #d8d8d8;
-  color: black;
-  font-size: 20px;
-  align-items: center;
-  justify-content: center;
-  width: 16vw;
-  height: 10vh;
-  margin: auto;
-}
-
 /* Modal Footer */
 .modal-footer {
   padding: 2px 16px;
@@ -253,7 +230,26 @@ p {
   animation-name: animatetop;
   animation-duration: 0.4s;
 }
-
+/* Formulaire de contact */
+.wpcf7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wpcf7-submit {
+  display: flex;
+  border: none;
+  border-radius: 3px;
+  position: relative;
+  background-color: #d8d8d8;
+  color: black;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 16vw;
+  height: 10vh;
+  margin: auto;
+}
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {
@@ -265,7 +261,6 @@ p {
     opacity: 1;
   }
 }
-
 @keyframes animatetop {
   from {
     top: -300px;
@@ -276,7 +271,7 @@ p {
     opacity: 1;
   }
 }
-/* Liste des photos */
+/* Gallery Style */
 .box {
   justify-content: center;
   object-fit: cover;
@@ -326,6 +321,12 @@ p {
   align-items: center;
   padding-bottom: 30px;
 }
+.button_burger {
+  background-color: none;
+  border: none;
+  background-color: white;
+}
+/* Single page style */
 .single_photos_content {
   display: flex;
   flex-direction: row;
@@ -359,7 +360,6 @@ p {
   border-bottom: 2px solid black;
   height: 116px;
 }
-
 .single_photos_next {
   display: flex;
   flex-direction: column;
@@ -369,11 +369,6 @@ p {
 }
 .text_maj {
   text-transform: uppercase;
-}
-.button_burger {
-  background-color: none;
-  border: none;
-  background-color: white;
 }
 .single_photos_container {
   display: grid;
@@ -457,6 +452,7 @@ button {
   font-family: "Space Mono", monospace;
   font-weight: 700;
 }
+/* Lightbox style */
 .logo_eye {
   position: absolute;
   top: 50%;

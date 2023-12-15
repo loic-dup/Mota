@@ -1,7 +1,8 @@
 <?php get_header() ?>
 <?php if (have_posts()) : ?>
   <?php while (have_posts()) : the_post(); ?>
-
+    <!-- Affichage du thumbnail de l'article correspondant
+Ainsi que ses taxonomies et champs. -->
     <div class="single_photos_content">
       <div class="single_photos_meta text_maj">
         <?php the_title('<h1 class="single_photos_title">', '</h1>') ?>
@@ -21,9 +22,11 @@
         <?php the_post_thumbnail($size = "large") ?>
       </div>
     </div>
+    <!-- Boutton permettant l'accès au formulaire de contact -->
     <div class="single_photos_contact">
       <h3>Cette photo vous intéresse ?</h3>
       <button id="myBtn" class="button_grey">Contact</button>
+      <!-- Affiche dans l'ordre de publication les post précédents et suivants -->
       <div class="single_photos_container2">
         <div class="single_photos_box2 prev_img">
           <?php
@@ -41,6 +44,7 @@
         </div>
       </div>
     </div>
+    <!-- Affichage des posts ayant la mème catégorie que l'actuel -->
     <h2>VOUS AIMEREZ AUSSI</h2>
     <div class="single_photos_next">
       <div class="single_photos_container">
@@ -66,12 +70,7 @@
           <?php endif; ?>
         </div>
       </div>
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          let ref = <?php $current_reference ?>;
-          document.querySelector("#ref").value = <?php $current_reference ?>;
-        })
-      </script>
+
       <a href="http://localhost/Mota/"><button class="button_grey">Toutes les photos</button></a>
     </div>
 
@@ -79,4 +78,17 @@
 <?php else : ?>
   <h1> Pas d'articles</h1>
 <?php endif; ?>
+<script>
+  (function($) {
+    document.addEventListenerAll('.button_grey').click(function() {
+      if (input) {
+        console.log("hello");
+        document.getElementById("ref").val = ("hello");
+      } else {
+        console.log("bye")
+      }
+    });
+
+  })
+</script>
 <?php get_footer() ?>

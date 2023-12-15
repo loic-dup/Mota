@@ -11,7 +11,7 @@
 </head>
 
 <body>
-
+  <!-- Menu principal -->
   <nav class="menu-border_bottom nav_fixed" role="navigation" aria-label="<?php esc_html_e('Menu principal', 'text-domain'); ?>">
     <div class="menu-principal">
       <div><img class="logo" src="<?php echo get_template_directory_uri() . '/assets/images/Logo.png'; ?>" /></div>
