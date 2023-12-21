@@ -1,7 +1,5 @@
 (function ($) {
   $(document).ready(function () {
-    console.log("hello");
-    document.getElementById("ref").value = "My value";
     let page = 1; // Numéro de page initial
     $("#load-more-button").on("click", function () {
       if (page) {

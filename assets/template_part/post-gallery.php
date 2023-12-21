@@ -12,7 +12,12 @@ if ($query->have_posts()) :
     get_template_part('assets/template_part/lightbox');
   endwhile;
   wp_reset_postdata(); // Réinitialiser la requête post
+  wp_reset_query();
+
 else :
   echo "Aucun post trouvé avec cette taxonomie.lol";
 endif;
+wp_reset_postdata(); // Réinitialiser la requête post
+wp_reset_query();
+
 ?> 

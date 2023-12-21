@@ -35,3 +35,15 @@
   max-width: 100%;
   height: auto;
 }
+.info_title {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  text-transform: uppercase;
+}
+.info_taxo {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  text-transform: uppercase;
+}

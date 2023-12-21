@@ -134,7 +134,6 @@ function load_more_posts()
       get_template_part('assets/template_part/lightbox');
     endwhile;
   endif;
-
   // wp_reset_postdata();
   die();
 }
@@ -179,6 +178,7 @@ function filter_posts()
     else :
       echo "Il n'y a pas de photos correspondant à votre recherche";
     endif;
+    die();
   }
   // Si on utilises le  filtre Categories
   // Alors on applique le tri de photos correspondant
@@ -205,8 +205,8 @@ function filter_posts()
       endwhile;
     else :
       echo "Il n'y a pas de photos correspondant à votre recherche";
-
     endif;
+    die();
   }
   // Si on utilises le  filtre Formats
   // Alors on applique le tri de photos correspondant 
@@ -235,6 +235,7 @@ function filter_posts()
       echo "Il n'y a pas de photos correspondant à votre recherche";
 
     endif;
+    die();
   }
   // Si on utilises le  filtre date
   // Alors on applique le tri de photos correspondant 
@@ -256,6 +257,7 @@ function filter_posts()
     else :
       echo "Il n'y a pas de photos correspondant à votre recherche";
     endif;
+    die();
   }
 }
 

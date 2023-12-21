@@ -471,3 +471,6 @@ button {
 .box__container {
   position: relative;
 }
+.ref_text {
+  display: none;
+}

@@ -20,7 +20,8 @@
     <?php while ($query->have_posts()) : $query->the_post();  ?>
       <?php the_post_thumbnail('full', ['class' => 'hero']); ?>
     <?php endwhile;
-    wp_reset_postdata(); ?>
+    wp_reset_postdata();
+    wp_reset_query(); ?>
   </div>
   <div class="hero-title">
     <h1>PHOTOGRAPHE EVENT</h1>

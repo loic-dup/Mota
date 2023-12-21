@@ -12,7 +12,7 @@ Ainsi que ses taxonomies et champs. -->
         <?php $current_annee = get_post_meta(get_the_ID(), "annee", true); ?>
         <?php $current_format = get_the_terms($post->ID, 'formats'); ?>
         <?php $current_categorie = get_the_terms($post->ID, 'category'); ?>
-        <h3>Référence : <?php echo $current_reference ?> </h3>
+        <h3>Référence : <span class="ref_text"><?php echo $current_reference ?></span> </h3>
         <h3>Catégorie : <?php echo $current_categorie[0]->name ?> </h3>
         <h3>Format : <?php echo $current_format[0]->name ?> </h3>
         <h3>Type : <?php echo $current_type ?> </h3>
@@ -78,17 +78,5 @@ Ainsi que ses taxonomies et champs. -->
 <?php else : ?>
   <h1> Pas d'articles</h1>
 <?php endif; ?>
-<script>
-  (function($) {
-    document.addEventListenerAll('.button_grey').click(function() {
-      if (input) {
-        console.log("hello");
-        document.getElementById("ref").val = ("hello");
-      } else {
-        console.log("bye")
-      }
-    });
 
-  })
-</script>
 <?php get_footer() ?>

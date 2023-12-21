@@ -7,7 +7,6 @@ jQuery(document).ready(function ($) {
       let category = $("#filtres__category").val();
       let formats = $("#filtres__formats").val();
       let order = $("#filtres__dates").val();
-      console.log(order);
       $.ajax({
         url: my_ajax_object.ajax_url,
         type: "POST",
