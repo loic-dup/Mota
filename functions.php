@@ -22,6 +22,8 @@ function theme_register_assets()
   wp_enqueue_script('scripts');
   wp_register_script('filtres_script', get_template_directory_uri() . '/assets/js/filtres.js');
   wp_enqueue_script('filtres_script');
+  wp_register_script('modal_lightbox_script', get_template_directory_uri() . '/assets/js/modal-lightbox.js');
+  wp_enqueue_script('modal_lightbox_script');
   wp_register_script('menus', get_template_directory_uri() . '/assets/js/menus.js');
   wp_enqueue_script('menus');
   wp_enqueue_script('motaphoto', get_template_directory_uri() . '/assets/js/motaphoto.js', array('jquery'), '1.0.0', true);

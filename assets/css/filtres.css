@@ -5,6 +5,34 @@
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
 }
+@media (max-width: 800px) {
+  .filtres_select {
+    width: 160px;
+    height: 43px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  }
+  .filtres__container2 {
+    display: flex;
+    gap: 20px;
+  }
+  .filtres__container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: auto;
+  }
+}
+@media (max-width: 500px) {
+  .filtres_select {
+    width: 100px;
+    height: 43px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+  }
+}
 .filtres_select option {
   font-family: "Poppins", sans-serif;
   font-weight: 700;

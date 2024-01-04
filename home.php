@@ -9,7 +9,7 @@
 <div class="load_button">
   <button class="button_grey" id="load-more-button">Charger plus</button>
 </div>
-<?php //get_template_part('/assets/template_part/lightbox'); 
+<?php get_template_part('/assets/template_part/modal-lightbox');
 ?>
 
 <?php get_footer(); ?>

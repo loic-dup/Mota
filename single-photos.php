@@ -33,6 +33,8 @@ Ainsi que ses taxonomies et champs. -->
           $previous_post = get_previous_post();
           if (is_a($previous_post, 'WP_Post')) : ?>
             <a href="<?php echo get_permalink($previous_post->ID); ?>"><?php echo get_the_post_thumbnail($previous_post->ID, $size = "thumbnail"); ?></a>
+          <?php else : ?>
+            <a href="<?php echo get_permalink($adjacent_post->ID); ?>"><?php echo get_the_post_thumbnail($adjacent_post->ID, $size = "thumbail"); ?></a>
           <?php endif; ?>
         </div>
         <div class="single_photos_box2 next_img">
@@ -40,12 +42,14 @@ Ainsi que ses taxonomies et champs. -->
           $next_post = get_next_post();
           if (is_a($next_post, 'WP_Post')) : ?>
             <a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo get_the_post_thumbnail($next_post->ID, $size = "thumbnail"); ?></a>
+          <?php else : ?>
+            <a href="<?php echo get_permalink($adjacent_post->ID); ?>"><?php echo get_the_post_thumbnail($adjacent_post->ID, $size = "thumbail"); ?></a>
           <?php endif; ?>
         </div>
       </div>
     </div>
     <!-- Affichage des posts ayant la mème catégorie que l'actuel -->
-    <h2>VOUS AIMEREZ AUSSI</h2>
+    <h2 class="title_love">VOUS AIMEREZ AUSSI</h2>
     <div class="single_photos_next">
       <div class="single_photos_container">
         <div class="single_photos_box">
@@ -54,19 +58,71 @@ Ainsi que ses taxonomies et champs. -->
           $previous_post = get_previous_post($taxonomy = $same_category);
           if (is_a($previous_post, 'WP_Post')) : ?>
             <a href="<?php echo get_permalink($previous_post->ID); ?>"><?php echo get_the_post_thumbnail($previous_post->ID, $size = "large"); ?></a>
+            <div class="box__infos2">
+              <div><a href="<?php echo get_permalink($next_post->ID); ?>"><img class="logo_eye" src="<?= get_stylesheet_directory_uri() . '/assets/images/Icon_eye.png' ?>"></a></div>
+              <div><img class="logo_fullscreen" src="<?= get_stylesheet_directory_uri() . '/assets/images/Icon_fullscreen.png' ?>"></div>
+              <div>
+                <p class="info_title"><?php the_title() ?></p>
+              </div>
+              <div class="info_taxo">
+                <?php $taxonomy = 'category';
+                $terms = get_the_terms(get_the_ID(), $taxonomy);
+                foreach ($terms as $term) {
+                  echo '<p href="' .  '" class="therme">' . esc_html($term->name) . '</p> ';
+                } ?> </div>
+            </div>
           <?php $adjacent_post =  get_adjacent_post($taxonomy = $same_category);
           else : ?>
             <a href="<?php echo get_permalink($adjacent_post->ID); ?>"><?php echo get_the_post_thumbnail($adjacent_post->ID, $size = "large"); ?></a>
+            <div class="box__infos2">
+              <div><a href="<?php echo get_permalink($next_post->ID); ?>"><img class="logo_eye" src="<?= get_stylesheet_directory_uri() . '/assets/images/Icon_eye.png' ?>"></a></div>
+              <div><img class="logo_fullscreen" src="<?= get_stylesheet_directory_uri() . '/assets/images/Icon_fullscreen.png' ?>"></div>
+              <div>
+                <p class="info_title"><?php the_title() ?></p>
+              </div>
+              <div class="info_taxo">
+                <?php $taxonomy = 'category';
+                $terms = get_the_terms(get_the_ID(), $taxonomy);
+                foreach ($terms as $term) {
+                  echo '<p href="' .  '" class="therme">' . esc_html($term->name) . '</p> ';
+                } ?> </div>
+            </div>
           <?php endif; ?>
         </div>
         <div class="single_photos_box">
           <?php
           $next_post = get_next_post($taxonomy = $same_category);
           if (is_a($next_post, 'WP_Post')) : ?>
-            <a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo get_the_post_thumbnail($next_post->ID, $size = "large"); ?></a>
+            <a href="<?php echo get_permalink($next_post->ID); ?>"><?php echo get_the_post_thumbnail($next_post->ID, $size = ""); ?></a>
+            <div class="box__infos2">
+              <div><a href="<?php echo get_permalink($next_post->ID); ?>"><img class="logo_eye" src="<?= get_stylesheet_directory_uri() . '/assets/images/Icon_eye.png' ?>"></a></div>
+              <div><img class="logo_fullscreen" src="<?= get_stylesheet_directory_uri() . '/assets/images/Icon_fullscreen.png' ?>"></div>
+              <div>
+                <p class="info_title"><?php the_title() ?></p>
+              </div>
+              <div class="info_taxo">
+                <?php $taxonomy = 'category';
+                $terms = get_the_terms(get_the_ID(), $taxonomy);
+                foreach ($terms as $term) {
+                  echo '<p href="' .  '" class="therme">' . esc_html($term->name) . '</p> ';
+                } ?> </div>
+            </div>
           <?php $adjacent_post =  get_adjacent_post($taxonomy = $same_category);
           else : ?>
-            <a href="<?php echo get_permalink($adjacent_post->ID); ?>"><?php echo get_the_post_thumbnail($adjacent_post->ID, $size = "large"); ?></a>
+            <a href="<?php echo get_permalink($adjacent_post->ID); ?>"><?php echo get_the_post_thumbnail($adjacent_post->ID, $size = ""); ?></a>
+            <div class="box__infos2">
+              <div><a href="<?php echo get_permalink($next_post->ID); ?>"><img class="logo_eye" src="<?= get_stylesheet_directory_uri() . '/assets/images/Icon_eye.png' ?>"></a></div>
+              <div><img class="logo_fullscreen" src="<?= get_stylesheet_directory_uri() . '/assets/images/Icon_fullscreen.png' ?>"></div>
+              <div>
+                <p class="info_title"><?php the_title() ?></p>
+              </div>
+              <div class="info_taxo">
+                <?php $taxonomy = 'category';
+                $terms = get_the_terms(get_the_ID(), $taxonomy);
+                foreach ($terms as $term) {
+                  echo '<p href="' .  '" class="therme">' . esc_html($term->name) . '</p> ';
+                } ?> </div>
+            </div>
           <?php endif; ?>
         </div>
       </div>

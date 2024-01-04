@@ -30,9 +30,3 @@ $(document).ready(function () {
     $('input[name="ref"]').val($reference);
   });
 });
-$(document).ready(function () {
-  $("#menu-item-46").click(function () {
-    $reference = $(".ref_text").text();
-    $('input[name="ref"]').val($reference);
-  });
-});

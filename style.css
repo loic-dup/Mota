@@ -41,6 +41,7 @@ nav {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: white;
+  z-index: 11;
 }
 .logo {
   width: 216px;
@@ -124,12 +125,15 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
   max-width: 1440px;
-  overflow: hidden;
+  height: 100%;
 }
 .hero-image {
   width: 100%;
+}
+.hero-image img {
+  width: 100%;
+  object-fit: cover;
 }
 .hero-title {
   display: flex;
@@ -137,6 +141,7 @@ nav {
   justify-content: center;
   align-items: center;
   width: 100%;
+  overflow: hidden;
 }
 .hero-title h1 {
   font-family: "SpaceMono-Bold";
@@ -148,7 +153,16 @@ nav {
   width: 100%;
   text-align: center;
 }
-
+@media (max-width: 800px) {
+  .hero-title h1 {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 500px) {
+  .hero-title h1 {
+    font-size: 3rem;
+  }
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -230,6 +244,27 @@ nav {
   animation-name: animatetop;
   animation-duration: 0.4s;
 }
+@media (max-width: 1100px) {
+  .modal-content {
+    width: 40%;
+  }
+}
+@media (max-width: 800px) {
+  .modal-content {
+    width: 50%;
+  }
+}
+@media (max-width: 650px) {
+  .modal-content {
+    width: 75%;
+  }
+}
+@media (max-width: 400px) {
+  .modal-content {
+    width: 80%;
+  }
+}
+
 /* Formulaire de contact */
 .wpcf7 {
   display: flex;
@@ -276,12 +311,8 @@ nav {
   justify-content: center;
   object-fit: cover;
   align-items: center;
-  max-width: 100%;
-  max-height: 100%;
-  overflow: hidden;
 }
 .box img {
-  max-width: 100%;
   object-fit: cover;
   width: 100% !important;
   height: 495px !important;
@@ -299,7 +330,7 @@ nav {
   .conteneur {
     max-width: 1148px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: 1fr;
     grid-gap: 15px;
     padding-top: 30px;
@@ -331,7 +362,46 @@ nav {
   display: flex;
   flex-direction: row;
   margin: inherit;
-  max-width: 1440px;
+}
+@media (max-width: 600px) {
+  .single_photos_content {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    border-bottom: 2px solid black;
+  }
+  .single_photos_container2 {
+    display: none !important;
+  }
+  .single_photos_contact {
+    flex-direction: column !important;
+  }
+  .title_love {
+    display: flex;
+    justify-content: center;
+  }
+  .single_photos_meta {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    border-bottom: 0px solid black !important;
+    margin-left: 20%;
+  }
+  .single_photos_thumbnail {
+    justify-content: center;
+    object-fit: cover;
+    width: 80% !important;
+    align-items: center;
+    margin: auto;
+  }
+  .single_photos_box {
+    width: 317px !important;
+    height: 495px;
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 }
 .single_photos_thumbnail {
   justify-content: center;
@@ -356,7 +426,6 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 100px;
   border-bottom: 2px solid black;
   height: 116px;
 }
@@ -380,6 +449,18 @@ nav {
   overflow: hidden;
   max-width: 100%;
 }
+@media (max-width: 1100px) {
+  .single_photos_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 30px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    padding-right: 37px;
+    overflow: hidden;
+    max-width: 100%;
+  }
+}
 .single_photos_title {
   font-size: 66px;
 }
@@ -402,6 +483,10 @@ nav {
   height: 80px;
   max-width: 100%;
   max-height: 100%;
+}
+.next_img::after {
+  content: "	\0025B6 ";
+  padding-left: 65px;
 }
 .next_img::after {
   content: "	\0025B6 ";
@@ -452,13 +537,13 @@ button {
   font-family: "Space Mono", monospace;
   font-weight: 700;
 }
+
 /* Lightbox style */
 .logo_eye {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 45%;
   right: 50%;
-  width: 40px;
   height: 40px;
   object-fit: contain;
 }
@@ -467,10 +552,43 @@ button {
   top: 0%;
   right: 0%;
   background-color: transparent;
+  color: #ffffff;
 }
-.box__container {
+.box__infos {
+  opacity: 0;
+  max-height: 495px;
+  width: 100%;
+  height: 100%;
   position: relative;
+  top: -100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* un arrière plan bleu à 50% de transparence */
+  z-index: 9;
 }
-.ref_text {
-  display: none;
+.box__infos2 {
+  opacity: 0;
+  max-height: 495px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: -101%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* un arrière plan bleu à 50% de transparence */
+  z-index: 9;
+}
+.box__infos:hover {
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+}
+.box__infos2:hover {
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
 }
