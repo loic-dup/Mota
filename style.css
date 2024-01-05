@@ -551,6 +551,9 @@ button {
   position: absolute;
   top: 0%;
   right: 0%;
+  height: 40px;
+  padding-top: 5px;
+  padding-right: 5px;
   background-color: transparent;
   color: #ffffff;
 }
@@ -591,4 +594,8 @@ button {
 .box__infos2:hover {
   transition: all 0.5s ease-in-out;
   opacity: 1;
+}
+.therme {
+  text-decoration: none;
+  color: white;
 }

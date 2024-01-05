@@ -4,6 +4,7 @@
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
+  font-family: "Poppins", sans-serif;
 }
 @media (max-width: 800px) {
   .filtres_select {
@@ -37,6 +38,14 @@
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 12px;
+}
+.filtres_select option:hover {
+  color: red;
+  background-color: red;
+}
+.filtres_select option:active {
+  color: red;
+  background-color: red;
 }
 .select__title {
   font-weight: 700;

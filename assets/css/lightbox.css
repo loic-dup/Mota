@@ -29,6 +29,10 @@
   .container-lightbox {
     flex-direction: row;
   }
+  .lightbox__container {
+    height: 80%;
+    margin: 10%;
+  }
 }
 .infos_light {
   display: flex;
@@ -43,6 +47,7 @@
   position: fixed;
   right: 20px;
   top: 50%;
+  margin: 20px;
 }
 .lightbox__prev {
   position: fixed;

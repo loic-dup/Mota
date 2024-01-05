@@ -260,6 +260,29 @@ function filter_posts()
       echo "Il n'y a pas de photos correspondant à votre recherche";
     endif;
     die();
+  } else {
+    $args = array(
+      'post_type' => 'photos',
+      'posts_per_page' => 12,
+      'orderby' => 'post_in',
+      array(
+        'taxonomy' => 'category',
+      ),
+
+
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+      while ($query->have_posts()) : $query->the_post();
+
+        get_template_part('assets/template_part/lightbox');
+
+      endwhile;
+    else :
+      echo "Il n'y a pas de photos correspondant à votre recherche";
+    endif;
+    die();
   }
 }
 

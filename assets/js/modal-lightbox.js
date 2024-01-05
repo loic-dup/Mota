@@ -8,7 +8,6 @@ jQuery(document).ready(function ($) {
       var article = articlesData[i];
       // Vérifiez si l'ID correspond à l'ID recherché
       if (article.ID == clickPhoto) {
-        // Sélectionnez l'élément avec la classe 'clickPhotoSuiv'
         $(".lightbox__container").html("");
         $(".lightbox__container").append(article.thumbnail);
         $(".lightbox__next").attr("data-id", article.ID);
@@ -26,25 +25,25 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
   $(".lightbox__next").click(function () {
     var dataId = parseInt(this.getAttribute("data-id"));
-    console.log(dataId);
+    // console.log(dataId);
     // Accéder aux données depuis la variable JavaScript
     for (var i = 0; i < articlesData.length; i++) {
       var article = articlesData[i];
-      console.log(articlesData);
+      // console.log(articlesData);
       // Vérifiez si l'ID correspond à l'ID recherché
       if (article.ID === dataId) {
         article = articlesData[i + 1];
-        console.log(article);
+        // console.log(article);
         dataId = article.ID;
+        // console.log(article);
         if (dataId === 115) {
           dataId = 73;
         } else if (dataId === 73) {
           dataId = 115;
         }
-        console.log(dataId);
-        // Sélectionnez l'élément avec la classe 'clickPhotoSuiv'
-        console.log(article.taxonomy[0].name);
-        // Sélectionnez l'élément avec la classe 'clickPhotoSuiv'
+        // console.log(dataId);
+        // console.log(article.taxonomy[0].name);
+        // console.log(article.field);
         $(".lightbox__container").html("");
         $(".lightbox__container").append(article.thumbnail);
 
@@ -72,18 +71,18 @@ jQuery(document).ready(function ($) {
       // Vérifiez si l'ID correspond à l'ID recherché
       if (article.ID === dataId) {
         article = articlesData[i - 1];
-        console.log(article);
-        console.log(articlesData);
+        // console.log(article);
+        // console.log(articlesData);
         dataId = article.ID;
-        console.log(dataId);
+        // console.log(article);
+        // console.log(dataId);
+        // console.log(article.field);
         if (dataId === 115) {
           dataId = 73;
         } else if (dataId === 73) {
           dataId = 115;
         }
-        // Sélectionnez l'élément avec la classe 'clickPhotoSuiv'
-        console.log(article.taxonomy[0].name);
-
+        // console.log(article.taxonomy[0].name);
         $(".lightbox__container").html("");
         $(".lightbox__container").append(article.thumbnail);
 

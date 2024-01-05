@@ -13,7 +13,7 @@
     </div>
     <div class="post_light">
       <div class="lightbox__prev">
-        <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow_prev.png' ?>">
+        <img src="<?= get_stylesheet_directory_uri() . '/assets/images/Fleche_precedente.png' ?>">
       </div>
       <div class="lightbox__container">
         <?php
@@ -52,14 +52,14 @@
 
       </div>
       <div class="lightbox__next">
-        <img src="<?= get_stylesheet_directory_uri() . '/assets/images/arrow_next.png' ?>">
+        <img src="<?= get_stylesheet_directory_uri() . '/assets/images/Fleche_suivante.png' ?>">
       </div>
       <div class="infos_light">
-        <a class="ref>"><?php echo $ref ?></a>
-
+        <a class="ref"><?php echo $ref ?></a>
         <?php
         $taxonomy = 'category'; // Remplacez par le nom de la taxonomie que vous souhaitez afficher
-        $terms = get_the_terms(get_the_ID(), $taxonomy);
+        $terms = get_the_terms($article->ID, $taxonomy);
+        // var_dump($terms);
         if ($terms && !is_wp_error($terms)) {
           foreach ($terms as $term) {
             echo '<a href="' . esc_url(get_term_link($term)) . '" class="therme">' . esc_html($term->name) . '</a> ';
