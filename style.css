@@ -73,6 +73,7 @@ nav {
 }
 .menu_ a:hover {
   color: #e00000;
+  font-weight: 700;
 }
 @media (max-width: 800px) {
   nav #icons {
@@ -598,4 +599,9 @@ button {
 .therme {
   text-decoration: none;
   color: white;
+}
+button:hover {
+  background-color: black;
+  color: white;
+  transition: all 0.5s ease-in-out;
 }
