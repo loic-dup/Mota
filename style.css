@@ -128,6 +128,7 @@ nav {
   align-items: center;
   max-width: 1440px;
   height: 100%;
+  margin-bottom: 60px;
 }
 .hero-image {
   width: 100%;
@@ -346,6 +347,12 @@ nav {
   width: 272px;
   height: 50px;
   cursor: pointer;
+  margin-right: 415px;
+}
+@media (max-width: 1200px) {
+  .button_grey {
+    margin-right: 0px;
+  }
 }
 .load_button {
   display: flex;
